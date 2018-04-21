@@ -1,13 +1,21 @@
-.root-container {
-  display: grid;
-  width: 100vw;
-  height: 100vh;
+.list {
+  grid-column: 1 / 3;
+  border: 1px solid black;
+}
 
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr;
-  grid-template-areas:
-  "navigation item item item";
-  grid-gap: 10px;
+.workarea {
+  position: relative;
 
-  background: white;
+  grid-column: 3 / end;
+  border: 1px solid black;
+}
+
+.window-dashboard {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+
+  width: 30px;
+  height: 90px;
+  border: 1px solid black;
 }
