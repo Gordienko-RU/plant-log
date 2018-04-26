@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { WorkareaComponent } from './workarea/workarea.component';
 import { NewCardTemplateComponent } from './new-card-template/new-card-template.component';
-import { WindowDashboardComponent } from './window-dashboard/window-dashboard.component';
 import { AddNewPlantButtonComponent } from './workarea/add-new-plant-button/add-new-plant-button.component';
 
 
@@ -16,7 +15,6 @@ import { AddNewPlantButtonComponent } from './workarea/add-new-plant-button/add-
     PlantsListComponent,
     WorkareaComponent,
     NewCardTemplateComponent,
-    WindowDashboardComponent,
     AddNewPlantButtonComponent
   ],
   imports: [
