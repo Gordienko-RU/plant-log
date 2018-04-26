@@ -2,7 +2,9 @@
   "name": "plant-log",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "main.js",
   "scripts": {
+    "electron": "electron .",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@angular/cli": "~1.7.4",
+    "electron": "^1.8.4",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
