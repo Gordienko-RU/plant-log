@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'app-add-new-plant-button',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNewPlantButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor( private electronService: ElectronService ) { }
+
+  openWindow() {
+    this.electronService.ipcRenderer.send('open-add-new-card-window');
+  };
 
   ngOnInit() {
   }

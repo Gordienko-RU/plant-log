@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import test from './test';
+import list from './list';
+import targetPlant from './target-plant';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  list,
+  targetPlant,
+});
 
 export default rootReducer;
