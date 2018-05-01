@@ -1,0 +1,20 @@
+<p>asdfdsf</p>
+
+<label for={{id}}>{{title}}</label>
+
+<input
+  *ngIf="elementName === 'input'"
+  [type]="type"
+  [name]="name"
+  [id]="id"
+/>
+
+<select
+  *ngIf="elementName === 'select'"
+  [name]="name"
+  [id]="id"
+>
+<option *ngFor="let option of options" [value]="option">
+  {{option}}
+</option>
+</select>

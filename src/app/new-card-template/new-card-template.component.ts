@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewCardTemplateComponent implements OnInit {
 
+  testObject = {
+    title: 'test',
+    id: 'test',
+    name: 'test',
+    elementName: 'input',
+    type: 'text',
+  }
+
   constructor() { }
 
   ngOnInit() {
