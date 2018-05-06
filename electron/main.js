@@ -7,22 +7,9 @@ const {
   ANGULARJS_BATARANG
 } = require('electron-devtools-installer');
 const { createUrl } = require('./utils');
-const {
-  mainWindowOptions,
-  addingNewCardWindowOptions,
-} = require('./windowsOptions')
+const { mainWindowOptions } = require('./windowsOptions');
 
 let mainWindow;
-
-ipcMain.on('open-add-new-card-window', () => {
-  const sourceUrl = createUrl('../src/app/new-card-template/new-card-template.component.html');
-  const addingNewCardWindow = new BrowserWindow(
-    Object.assign(addingNewCardWindowOptions, { parent: mainWindow })
-  );
-
-  addingNewCardWindow.loadURL(sourceUrl);
-  addingNewCardWindow.show();
-});
 
 const createWindow = () => {
   const sourceUrl = createUrl('../dist/index.html');

@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./workarea.component.scss'],
 })
 export class WorkareaComponent implements OnInit {
+  isNewCardModalWindowActive: boolean;
+
+  toggleNewCardModalWindow() {
+    this.isNewCardModalWindowActive = !this.isNewCardModalWindowActive;
+  }
 
   constructor() { }
 
   ngOnInit() {
+    this.isNewCardModalWindowActive = false;
   }
 
 }

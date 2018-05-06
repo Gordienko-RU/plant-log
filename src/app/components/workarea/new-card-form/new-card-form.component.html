@@ -1,0 +1,22 @@
+<app-labeled-input
+  *ngFor="let input of inputs"
+  [title]="input.title"
+  [name]="input.name"
+></app-labeled-input>
+
+<app-labeled-select
+*ngFor="let select of selects"
+  [title]="select.title"
+  [name]="select.name"
+  [values]="select.values"
+></app-labeled-select>
+
+<button
+  (click)="close()"
+  class="close-button"
+>Отмена</button>
+
+<button
+  (click)="createCard"
+  class="create-button"
+>Создать</button>

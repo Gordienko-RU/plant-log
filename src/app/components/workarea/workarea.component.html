@@ -1,0 +1,12 @@
+<app-modal-window
+  *ngIf="isNewCardModalWindowActive === true"
+>
+  <app-new-card-form
+    (closeModalWindow)="toggleNewCardModalWindow()"
+  ></app-new-card-form>
+</app-modal-window>
+
+<button
+  class="show-new-card-modal-window-button"
+  (click)="toggleNewCardModalWindow()"
+>+</button>

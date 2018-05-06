@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewCardTemplateComponent } from './new-card-template.component';
+import { LabeledSelectComponent } from './labeled-select.component';
 
-describe('NewCardTemplateComponent', () => {
-  let component: NewCardTemplateComponent;
-  let fixture: ComponentFixture<NewCardTemplateComponent>;
+describe('LabeledSelectComponent', () => {
+  let component: LabeledSelectComponent;
+  let fixture: ComponentFixture<LabeledSelectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewCardTemplateComponent ]
+      declarations: [ LabeledSelectComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewCardTemplateComponent);
+    fixture = TestBed.createComponent(LabeledSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
