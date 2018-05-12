@@ -1,5 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { inputs, selects } from './fields-source';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgRedux } from '@angular-redux/store';
+
+import { validationMap, inputs, selects } from './fields-source';
+import { addCardRequest } from '../../../redux/actions-creators'
+import { IAppState } from '../../../redux';
 
 @Component({
   selector: 'app-new-card-form',
@@ -9,11 +14,17 @@ import { inputs, selects } from './fields-source';
 export class NewCardFormComponent implements OnInit {
   inputs = inputs;
   selects = selects;
+  newCardForm: FormGroup;
+
   @Output() closeModalWindow = new EventEmitter<string>();
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    fb: FormBuilder,
+    private ngRedux: NgRedux<IAppState>
+  ) {
+    this.newCardForm = fb.group({
+      ...validationMap
+    })
   }
 
   close() {
@@ -21,6 +32,10 @@ export class NewCardFormComponent implements OnInit {
   }
 
   createCard() {
-    
+    const card = this.newCardForm.value;
+    this.ngRedux.dispatch(addCardRequest(card));
+  }
+
+  ngOnInit() {
   }
 }

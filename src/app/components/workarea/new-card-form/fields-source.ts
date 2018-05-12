@@ -1,3 +1,19 @@
+import { Validators } from '@angular/forms';
+
+export const validationMap = {
+  'title': ['', Validators.required],
+  'lifeForm': ['', Validators.required],
+  'class': ['', Validators.required],
+  'rootSystem': ['', Validators.required],
+  'sheetType': ['', Validators.required],
+  'vinationType': ['', Validators.required],
+  'flowerType': ['', Validators.required],
+  'fetusType': ['', Validators.required],
+  'distributeType': ['', Validators.required],
+  'environmentType': ['', Validators.required],
+  'usageType': ['', Validators.required],
+}
+
 export const inputs = [
   {
     title: 'видовое название растения',
@@ -100,7 +116,7 @@ export const selects = [
   },
   {
     title: 'применяемые человеком',
-    name: 'environmentType',
+    name: 'usageType',
     values: [
       '-',
       'пищевое',
@@ -108,7 +124,7 @@ export const selects = [
       'сорняк', 'кормовое',
       'медонос',
       'хлебные',
-      'декоративное' 
+      'декоративное'
     ]
   }
 ];

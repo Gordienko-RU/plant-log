@@ -7,7 +7,7 @@ import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store'
 import { AppComponent } from './components/app.component';
 
 import rootReducer from './redux/reducers';
-import { PlantLogState } from './redux';
+import { IAppState, initialState } from './redux';
 
 @NgModule({
   declarations: [
@@ -24,13 +24,13 @@ import { PlantLogState } from './redux';
 })
 export class AppModule {
   constructor(
-    ngRedux: NgRedux<PlantLogState>,
+    ngRedux: NgRedux<IAppState>,
     devTools: DevToolsExtension
   ) {
     let enhancers = [];
     if (devTools.isEnabled()) {
       enhancers.push(devTools.enhancer());
     };
-    ngRedux.configureStore(rootReducer, {}, [], enhancers);
+    ngRedux.configureStore(rootReducer, initialState, [], enhancers);
   }
 }

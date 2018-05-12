@@ -1,10 +1,11 @@
-import { combineReducers } from 'redux';
+import { combineReducers, Reducer } from 'redux';
+import { IAppState } from '..';
 import list from './list';
-import targetPlant from './target-plant';
+import targetCard from './target-card';
 
-const rootReducer = combineReducers({
+const rootReducer: Reducer<IAppState> = combineReducers({
   list,
-  targetPlant,
+  targetCard,
 });
 
 export default rootReducer;

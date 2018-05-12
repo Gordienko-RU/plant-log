@@ -1,22 +1,37 @@
-<app-labeled-input
-  *ngFor="let input of inputs"
-  [title]="input.title"
-  [name]="input.name"
-></app-labeled-input>
+<form [formGroup]="newCardForm">
 
-<app-labeled-select
-*ngFor="let select of selects"
-  [title]="select.title"
-  [name]="select.name"
-  [values]="select.values"
-></app-labeled-select>
+  <label *ngFor="let input of inputs">
+    {{input.title}}
+    <input
+      type="text"
+      [formControlName]="input.name"
+      [id]="input.name"
+    />
+  </label>
 
-<button
-  (click)="close()"
-  class="close-button"
->Отмена</button>
+  <label *ngFor="let select of selects">
+    {{select.title}}
+    <select
+      [formControlName]="select.name"
+      [id]="select.name"
+    >
+      <option
+        *ngFor="let value of select.values"
+        [value]="value"
+      >
+        {{value}}
+      </option>
+    </select>
+  </label>
 
-<button
-  (click)="createCard"
-  class="create-button"
->Создать</button>
+  <button
+    (click)="close()"
+    class="close-button"
+  >Отмена</button>
+
+  <button
+    (click)="createCard()"
+    class="create-button"
+    [disabled]="!newCardForm.valid"
+  >Создать</button>
+</form>
