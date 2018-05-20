@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { WorkareaModule } from './workarea.module';
 import { NavigationModule } from './navigation.module'
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
-import { createEpicMiddleware } from 'redux-observable';
 
 import { AppComponent } from './components/app.component';
 
+import createSagaMiddleware from 'redux-saga';
+
 import rootReducer from './redux/reducers';
-import rootEpic from './redux/epics';
+import rootSaga from './redux/sagas';
 import { IAppState, initialState } from './redux';
 
 @NgModule({
@@ -32,12 +33,13 @@ export class AppModule {
     const middlewares = [];
     const enhancers = [];
 
-    const epicMiddleware = createEpicMiddleware(rootEpic);
-    middlewares.push(epicMiddleware);
+    const sagaMiddleware = createSagaMiddleware();
+    middlewares.push(sagaMiddleware);
 
     if (devTools.isEnabled()) {
       enhancers.push(devTools.enhancer());
     };
     ngRedux.configureStore(rootReducer, initialState, middlewares, enhancers);
+    sagaMiddleware.run(rootSaga);
   }
 }

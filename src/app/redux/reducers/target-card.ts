@@ -12,16 +12,13 @@ const targetCard = (state: IAppState, action) => {
 
   switch(type) {
     case ADD_CARD_REQUEST: {
-      console.log('adding');
       return { ...state, loading: true }
     };
     case ADD_CARD_SUCCESS: {
-      console.log('success');
-      break;
+      return { ...state, loading: false }
     };
     case ADD_CARD_FAILURE: {
-      console.log('failure');
-      break;
+      return { ...state, loading: false }
     };
     default:
       return cardInitialState;
