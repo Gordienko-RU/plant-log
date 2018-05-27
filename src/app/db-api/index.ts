@@ -1,24 +1,40 @@
-let db = null;
-const DBOpenRequest = window.indexedDB.open('db');
+import { dbSchema } from '../components/workarea/new-card-form/fields-source';
 
-DBOpenRequest.onupgradeneeded = async (e) => {
+let db = null;
+const DBOpenRequest = window.indexedDB.open('db', 6);
+
+DBOpenRequest.onupgradeneeded = (e) => {
   const db = DBOpenRequest.result;
 
   if (db.objectStoreNames.contains('cardsStore')) {
     db.deleteObjectStore('cardsStore');
   }
-  db.createObjectStore("cardsStore", { autoIncrement: true });
-  db.create
+  const objectStore = db.createObjectStore("cardsStore", { keyPath: 'title' });
+  const keys = Object.keys(dbSchema);
+
+  keys.forEach((key) => {
+    const { name, keyPath, options } = dbSchema[key];
+    objectStore.createIndex(name, keyPath, options);
+  })
 };
 
-DBOpenRequest.onsuccess = (e) => {
-  console.log('connected successfully');
-  db = DBOpenRequest.result;
-};
+const connect = new Promise((resolve, reject) => {
+  DBOpenRequest.onsuccess = (e) => {
+    console.log('connected successfully');
+    db = DBOpenRequest.result;
+    resolve();
+  }
 
-DBOpenRequest.onerror = (e) => {
-  console.log('error while connecting');
-};
+  DBOpenRequest.onerror = (e) => {
+    reject(new Error('error while connecting'));
+  };
+});
+
+export const checkConnection = () => {
+  if (!db) {
+    return connect;
+  }
+}
 
 export const create = (item) => {
   const store = db.transaction('cardsStore', 'readwrite').objectStore('cardsStore');

@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { NavigationComponent } from './components/navigation/navigation.component';
 
@@ -7,12 +8,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
   declarations: [
     NavigationComponent
   ],
-  imports: [
-    BrowserModule
-  ],
-  exports: [
-    NavigationComponent
-  ]
+  imports: [RouterModule, BrowserModule],
+  exports: [NavigationComponent]
 })
 export class NavigationModule {
   constructor() {}

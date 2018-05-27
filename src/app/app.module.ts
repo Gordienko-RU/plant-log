@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { WorkareaModule } from './workarea.module';
 import { NavigationModule } from './navigation.module'
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
+import createSagaMiddleware from 'redux-saga';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './components/app.component';
 
-import createSagaMiddleware from 'redux-saga';
-
+import { AppRoutingModule } from './app-routing.module';
 import rootReducer from './redux/reducers';
 import rootSaga from './redux/sagas';
 import { IAppState, initialState } from './redux';
@@ -20,7 +21,9 @@ import { IAppState, initialState } from './redux';
     BrowserModule,
     WorkareaModule,
     NavigationModule,
-    NgReduxModule
+    NgReduxModule,
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

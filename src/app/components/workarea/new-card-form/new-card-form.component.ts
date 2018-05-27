@@ -34,6 +34,7 @@ export class NewCardFormComponent implements OnInit {
   createCard() {
     const card = this.newCardForm.value;
     this.ngRedux.dispatch(addCardRequest(card));
+    this.closeModalWindow.emit();
   }
 
   ngOnInit() {

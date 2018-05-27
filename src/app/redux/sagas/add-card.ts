@@ -1,24 +1,24 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { create, read, readAll } from '../../db-api';
+import { checkConnection, create } from '../../db-api';
+import { ADD_CARD_REQUEST } from '../actions';
 import {
-  ADD_CARD_REQUEST,
-  ADD_CARD_SUCCESS,
-} from '../actions';
+  addCardSuccess,
+  addCardFailure,
+  getListRequest
+} from '../actions-creators';
 
 function * addCardHandler(action) {
-  const card = {
-    id: '100',
-    title: 'test',
-  };
-  const response = yield call(create, action.payload);
-  console.log(response);
-  const records = yield call(readAll);
-  console.log(records);
-  yield put({ type: ADD_CARD_SUCCESS });
+  try {
+    yield call(checkConnection);
+    const response = yield call(create, action.payload);
+    yield put(addCardSuccess(action.payload));
+    yield put(getListRequest());
+  } catch (e) {
+    yield put(addCardFailure(e.message));
+  }
 }
 
 function * watchAddCardRequest() {
-  // read();
   yield takeLatest(ADD_CARD_REQUEST, addCardHandler);
 }
 

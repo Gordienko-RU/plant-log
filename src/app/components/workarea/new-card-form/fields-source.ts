@@ -1,5 +1,19 @@
 import { Validators } from '@angular/forms';
 
+export const dbSchema = {
+  'title': { name: 'title', keyPath: 'title', options: { unique:true }},
+  'lifeForm': { name: 'lifeForm', keyPath: 'lifeForm' },
+  'class': { name: 'class', keyPath: 'class' },
+  'rootSystem': { name: 'rootSystem', keyPath: 'rootSystem' },
+  'sheetType': { name: 'sheetType', keyPath: 'sheetType' },
+  'vinationType': { name: 'vinationType', keyPath: 'vinationType' },
+  'flowerType': { name: 'flowerType', keyPath: 'flowerType' },
+  'fetusType': { name: 'fetusType', keyPath: 'fetusType' },
+  'distributeType': { name: 'distributeType', keyPath: 'distributeType' },
+  'environmentType': { name: 'environmentType', keyPath: 'environmentType' },
+  'usageType': { name: 'usageType', keyPath: 'usageType' },
+}
+
 export const validationMap = {
   'title': ['', Validators.required],
   'lifeForm': ['', Validators.required],
