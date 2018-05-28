@@ -8,7 +8,19 @@
 
 <router-outlet></router-outlet>
 
-<button
-  class="show-new-card-modal-window-button"
-  (click)="toggleNewCardModalWindow()"
->+</button>
+<div class="button-container">
+  <button
+    *ngIf="isCardPage"
+    class="edit-new-card-modal-window-button"
+    (click)="toggleNewCardModalWindow()"
+  >редактировать</button>
+  <button
+    *ngIf="isCardPage"
+    class="remove-card-modal-window-button"
+    (click)="deleteCard()"
+  >удалить</button>
+  <button
+    class="show-new-card-modal-window-button"
+    (click)="toggleNewCardModalWindow()"
+  >добавить</button>
+</div>

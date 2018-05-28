@@ -6,6 +6,9 @@ import {
   GET_CARD_REQUEST,
   GET_CARD_SUCCESS,
   GET_CARD_FAILURE,
+  DELETE_CARD_REQUEST,
+  DELETE_CARD_SUCCESS,
+  DELETE_CARD_FAILURE
 } from '../actions';
 
 const { targetCard: cardInitialState } = initialState;
@@ -30,6 +33,15 @@ const targetCard = (state = cardInitialState, action) => {
       return { ...state, loading: false, entity: payload, }
     };
     case GET_CARD_FAILURE: {
+      return { ...state, loading: false, error: payload, }
+    };
+    case DELETE_CARD_REQUEST: {
+      return { ...state, loading: true, }
+    };
+    case DELETE_CARD_SUCCESS: {
+      return { ...state, loading: false }
+    };
+    case DELETE_CARD_FAILURE: {
       return { ...state, loading: false, error: payload, }
     };
     default:

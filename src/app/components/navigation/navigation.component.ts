@@ -19,12 +19,8 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.ngRedux.dispatch(getListRequest());
 
-    this.getItems.subscribe(
-      (items) => {
-        console.log(items);
-        this.items = items;
-      }
-    );
+    this.getItems
+      .subscribe((items) => this.items = items);
   }
 
 }

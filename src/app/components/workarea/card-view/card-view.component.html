@@ -1,3 +1,6 @@
-<p>
-  card-view works!
-</p>
+<table>
+  <tr *ngFor="let key of entityKeys">
+    <td>{{nameMapping[key]}}:</td>
+    <td>{{entity[key]}}</td>
+  </tr>
+</table>
