@@ -66,9 +66,9 @@ export const deleteItem = (title) => {
   });
 }
 
-export const update = (item, key) => {
-  const store = db.transaction('cardsStore').objectStore('cardsStore');
-  const request = store.put(item, key);
+export const update = (item) => {
+  const store = db.transaction('cardsStore', 'readwrite').objectStore('cardsStore');
+  const request = store.put(item);
 
   return new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result);

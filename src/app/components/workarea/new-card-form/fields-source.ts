@@ -28,6 +28,17 @@ export const validationMap = {
   'usageType': ['', Validators.required],
 }
 
+export const getEditValidationMap = (entity) => {
+  const editValidationMap = {};
+  const validationMapCopy = Object.assign(validationMap);
+  const keys = Object.keys(validationMapCopy);
+  keys.forEach((key) => {
+    validationMapCopy[key][0] = entity[key]
+    editValidationMap[key] = validationMapCopy[key]
+  })
+  return editValidationMap;
+}
+
 export const inputs = [
   {
     title: 'видовое название растения',

@@ -8,13 +8,15 @@ import { NewCardFormComponent } from './components/workarea/new-card-form/new-ca
 import { CardViewComponent } from './components/workarea/card-view/card-view.component';
 
 import { RouterModule } from '@angular/router';
+import { EditCardFormComponent } from './components/workarea/edit-card-form/edit-card-form.component';
 
 @NgModule({
   declarations: [
     WorkareaComponent,
     ModalWindowComponent,
     NewCardFormComponent,
-    CardViewComponent
+    CardViewComponent,
+    EditCardFormComponent
   ],
   imports: [
     ReactiveFormsModule,

@@ -6,6 +6,14 @@
   ></app-new-card-form>
 </app-modal-window>
 
+<app-modal-window
+  *ngIf="isNewCardModalWindowActive === true"
+>
+  <app-edit-card-form
+    (closeModalWindow)="toggleNewCardModalWindow()"
+  ></app-edit-card-form>
+</app-modal-window>
+
 <router-outlet></router-outlet>
 
 <div class="button-container">

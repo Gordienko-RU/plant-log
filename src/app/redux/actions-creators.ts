@@ -5,6 +5,9 @@ import {
   GET_CARD_REQUEST,
   GET_CARD_SUCCESS,
   GET_CARD_FAILURE,
+  EDIT_CARD_REQUEST,
+  EDIT_CARD_SUCCESS,
+  EDIT_CARD_FAILURE,
   DELETE_CARD_REQUEST,
   DELETE_CARD_SUCCESS,
   DELETE_CARD_FAILURE,
@@ -40,6 +43,21 @@ export const getCardSuccess = entity => ({
 
 export const getCardFailure = error => ({
   type: GET_CARD_FAILURE,
+  payload: error
+});
+
+export const editCardRequest = title => ({
+  type: EDIT_CARD_REQUEST,
+  payload: title,
+});
+
+export const editCardSuccess = entity => ({
+  type: EDIT_CARD_SUCCESS,
+  payload: entity,
+});
+
+export const editCardFailure = error => ({
+  type: EDIT_CARD_FAILURE,
   payload: error
 });
 

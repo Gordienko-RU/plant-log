@@ -1,0 +1,38 @@
+<form [formGroup]="editCardForm">
+
+  <label *ngFor="let input of inputs">
+    {{input.title}}
+    <input
+      type="text"
+      [formControlName]="input.name"
+      [id]="input.name"
+      [attr.disabled]="input.name === 'title'"
+    />
+  </label>
+
+  <label *ngFor="let select of selects">
+    {{select.title}}
+    <select
+      [formControlName]="select.name"
+      [id]="select.name"
+    >
+      <option
+        *ngFor="let value of select.values"
+        [value]="value"
+      >
+        {{value}}
+      </option>
+    </select>
+  </label>
+
+  <button
+    (click)="close()"
+    class="close-button"
+  >Отмена</button>
+
+  <button
+    (click)="editCard()"
+    class="create-button"
+    [disabled]="!editCardForm.valid"
+  >Сохранить</button>
+</form>
