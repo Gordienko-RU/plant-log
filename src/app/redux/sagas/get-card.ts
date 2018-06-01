@@ -9,6 +9,7 @@ import {
 function * getCardHandler(action) {
   try {
     yield call(checkConnection);
+    console.log('action payload', action.payload);
     const response = yield call(read, action.payload);
     yield put(getCardSuccess(response));
   } catch (e) {

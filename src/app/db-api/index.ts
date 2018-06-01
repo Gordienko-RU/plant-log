@@ -1,7 +1,7 @@
-import { dbSchema } from '../components/workarea/new-card-form/fields-source';
+import { dbSchema } from '../fields-source';
 
 let db = null;
-const DBOpenRequest = window.indexedDB.open('db', 6);
+const DBOpenRequest = window.indexedDB.open('db', 7);
 
 DBOpenRequest.onupgradeneeded = (e) => {
   const db = DBOpenRequest.result;
@@ -9,7 +9,7 @@ DBOpenRequest.onupgradeneeded = (e) => {
   if (db.objectStoreNames.contains('cardsStore')) {
     db.deleteObjectStore('cardsStore');
   }
-  const objectStore = db.createObjectStore("cardsStore", { keyPath: 'title' });
+  const objectStore = db.createObjectStore("cardsStore", { keyPath: 'id' });
   const keys = Object.keys(dbSchema);
 
   keys.forEach((key) => {
@@ -56,9 +56,9 @@ export const read = (id) => {
   });
 }
 
-export const deleteItem = (title) => {
+export const deleteItem = (id) => {
   const store = db.transaction('cardsStore', 'readwrite').objectStore('cardsStore');
-  const request = store.delete(title);
+  const request = store.delete(id);
 
   return new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result);

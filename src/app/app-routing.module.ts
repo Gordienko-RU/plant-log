@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CardViewComponent } from './components/workarea/card-view/card-view.component';
 
 const routes: Routes = [
-  { path: 'cards/:title', component: CardViewComponent },
+  { path: 'cards/:id', component: CardViewComponent },
 ];
 
 @NgModule({

@@ -12,8 +12,9 @@ import { deleteCardRequest } from '../../redux/actions-creators';
 })
 export class WorkareaComponent implements OnInit {
   isNewCardModalWindowActive: boolean;
+  isEditCardModalWindowActive: boolean;
   isCardPage: boolean;
-  title: string;
+  id: string;
 
   constructor(
     private router: Router,
@@ -24,9 +25,13 @@ export class WorkareaComponent implements OnInit {
     this.isNewCardModalWindowActive = !this.isNewCardModalWindowActive;
   }
 
+  toggleEditCardModalWindow() {
+    this.isEditCardModalWindowActive = !this.isEditCardModalWindowActive;
+  }
+
   deleteCard() {
     if(confirm('Удалить запись?')) {
-      this.ngRedux.dispatch(deleteCardRequest(this.title));
+      this.ngRedux.dispatch(deleteCardRequest(this.id));
       this.router.navigate(['']);
     };
   }
@@ -41,7 +46,7 @@ export class WorkareaComponent implements OnInit {
           this.isCardPage = url.indexOf('cards') !== -1
             ? true
             : false;
-          this.title = decodeURIComponent(url.slice(url.lastIndexOf('/') + 1))
+          this.id = url.slice(url.lastIndexOf('/') + 1)
         }
       });
   }

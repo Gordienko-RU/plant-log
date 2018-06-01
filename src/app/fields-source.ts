@@ -12,6 +12,7 @@ export const dbSchema = {
   'distributeType': { name: 'distributeType', keyPath: 'distributeType' },
   'environmentType': { name: 'environmentType', keyPath: 'environmentType' },
   'usageType': { name: 'usageType', keyPath: 'usageType' },
+  'id': { name: 'id', keyPath: 'id' },
 }
 
 export const validationMap = {

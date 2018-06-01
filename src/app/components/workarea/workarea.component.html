@@ -7,10 +7,10 @@
 </app-modal-window>
 
 <app-modal-window
-  *ngIf="isNewCardModalWindowActive === true"
+  *ngIf="isEditCardModalWindowActive === true"
 >
   <app-edit-card-form
-    (closeModalWindow)="toggleNewCardModalWindow()"
+    (closeModalWindow)="toggleEditCardModalWindow()"
   ></app-edit-card-form>
 </app-modal-window>
 
@@ -20,7 +20,7 @@
   <button
     *ngIf="isCardPage"
     class="edit-new-card-modal-window-button"
-    (click)="toggleNewCardModalWindow()"
+    (click)="toggleEditCardModalWindow()"
   >редактировать</button>
   <button
     *ngIf="isCardPage"

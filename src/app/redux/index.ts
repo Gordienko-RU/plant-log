@@ -14,6 +14,7 @@ interface Entity {
   fetusType: string,
   distributeType: string,
   environmentType: string,
+  id: string,
 }
 
 interface List {

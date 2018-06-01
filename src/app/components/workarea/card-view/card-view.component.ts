@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { IAppState } from '../../../redux';
 import { getCardRequest } from '../../../redux/actions-creators';
-import { nameMapping } from '../new-card-form/fields-source';
+import { nameMapping } from '../../../fields-source';
 
 @Component({
   selector: 'app-card-view',
@@ -15,8 +15,8 @@ export class CardViewComponent implements OnInit {
 
   @select(state => state.targetCard.entity) getEntity;
   nameMapping = nameMapping;
+  nameMappingKey = Object.keys(nameMapping);
   entity = {};
-  entityKeys = [];
 
   constructor(
     private router: Router,
@@ -29,18 +29,17 @@ export class CardViewComponent implements OnInit {
       .subscribe(entity => {
         if (entity) {
           this.entity = entity;
-          this.entityKeys = Object.keys(entity);
         }
       });
 
-    const title = this.route.snapshot.paramMap.get('title');
-    this.ngRedux.dispatch(getCardRequest(title));
+    const id = this.route.snapshot.paramMap.get('id');
+    this.ngRedux.dispatch(getCardRequest(id));
 
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationEnd) {
-          const title = this.route.snapshot.paramMap.get('title');
-          this.ngRedux.dispatch(getCardRequest(title));
+          const id = this.route.snapshot.paramMap.get('id');
+          this.ngRedux.dispatch(getCardRequest(id));
         }
       });
   }

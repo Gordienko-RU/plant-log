@@ -31,9 +31,9 @@ export const addCardFailure = error => ({
   payload: error
 });
 
-export const getCardRequest = title => ({
+export const getCardRequest = id => ({
   type: GET_CARD_REQUEST,
-  payload: title,
+  payload: id,
 });
 
 export const getCardSuccess = entity => ({
@@ -46,9 +46,9 @@ export const getCardFailure = error => ({
   payload: error
 });
 
-export const editCardRequest = title => ({
+export const editCardRequest = id => ({
   type: EDIT_CARD_REQUEST,
-  payload: title,
+  payload: id,
 });
 
 export const editCardSuccess = entity => ({
@@ -61,9 +61,9 @@ export const editCardFailure = error => ({
   payload: error
 });
 
-export const deleteCardRequest = title => ({
+export const deleteCardRequest = id => ({
   type: DELETE_CARD_REQUEST,
-  payload: title,
+  payload: id,
 });
 
 export const deleteCardSuccess = ()=> ({

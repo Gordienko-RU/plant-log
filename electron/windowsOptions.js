@@ -1,6 +1,6 @@
 const mainWindowOptions = {
-  width: 1024,
-  height: 768,
+  width: 900,
+  height: 500,
 };
 
 module.exports = {

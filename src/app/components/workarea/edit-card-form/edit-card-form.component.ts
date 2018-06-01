@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, NgRedux } from '@angular-redux/store';
 
-import { getEditValidationMap, inputs, selects } from '../new-card-form/fields-source';
+import { getEditValidationMap, inputs, selects } from '../../../fields-source';
 import { editCardRequest } from '../../../redux/actions-creators'
 import { IAppState } from '../../../redux';
 
@@ -17,6 +17,7 @@ export class EditCardFormComponent implements OnInit {
   inputs = inputs;
   selects = selects;
   editCardForm: FormGroup;
+  id = null;
 
   @Output() closeModalWindow = new EventEmitter<string>();
 
@@ -30,7 +31,7 @@ export class EditCardFormComponent implements OnInit {
   }
 
   editCard() {
-    const card = this.editCardForm.value;
+    const card = Object.assign({}, this.editCardForm.value, { id: this.id });
     this.ngRedux.dispatch(editCardRequest(card));
     this.closeModalWindow.emit();
   }
@@ -40,8 +41,9 @@ export class EditCardFormComponent implements OnInit {
       .subscribe(entity => {
         if (entity) {
           this.editCardForm = this.fb.group({
-            ...getEditValidationMap(entity)
-          })
+            ...getEditValidationMap(entity),
+          });
+          this.id = entity.id;
         }
       });
   }
