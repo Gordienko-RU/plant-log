@@ -5,6 +5,19 @@
   "main": "electron/main.js",
   "description": "small app, as TODO-LIST",
   "author": "Roman Gordienko",
+  "build": {
+    "files": [
+      "electron",
+      ],
+    "appId": "spp",
+    "directories": {
+      "buildResources": "dist",
+      "output": "app"
+    },
+    "mac": {
+      "category": "public.app-category.education"
+    }
+  },
   "scripts": {
     "electron": "NODE_ENV=production electron electron/main.js",
     "package": "electron-builder",
